@@ -31,7 +31,8 @@ do
 	notify-send --icon=gtk-info Test "Stand up and Relax"
 	#play music
 	hour=`date +%H`
-	if test "$hour" -ge 8 && test "$hour" -lt 7
+	day=`date +%u` #1-7 1==Monday
+	if test "$hour" -ge 8 && test "$hour" -lt 19 && test "$day" -ne 6 && test "$day" -ne 6 #workdays 8am to 7pm
 	then
 		mplayer -volume 50 "$mp3" 2>&1 > /dev/null &
 		echo  "Mplayer PID: " `jobs -p`
