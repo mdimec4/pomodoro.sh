@@ -32,7 +32,7 @@ do
 	#play music
 	hour=`date +%H`
 	day=`date +%u` #1-7 1==Monday
-	if test "$hour" -ge 8 && test "$hour" -lt 19 && test "$day" -ne 6 && test "$day" -ne 6 #workdays 8am to 7pm
+	if test "$hour" -ge 8 && test "$hour" -lt 19 && test "$day" -ne 6 && test "$day" -ne 7 #workdays(mon to fri) 8am to 7pm
 	then
 		mplayer -volume 50 "$mp3" 2>&1 > /dev/null &
 		echo  "Mplayer PID: " `jobs -p`
