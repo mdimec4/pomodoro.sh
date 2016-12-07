@@ -17,7 +17,9 @@ exit 0
 echo "hit ^C to stop"
 while true
 do	
+	#desktop notification
 	notify-send --icon=gtk-info Test "Work"
+	#count work
 	for i in `seq 0 24`; #25 min
 	do
 		rem=`echo "25-$i" | bc`
@@ -25,9 +27,16 @@ do
 		sleep 60
 	done    
 	
+	#desktop notification
 	notify-send --icon=gtk-info Test "Stand up and Relax"
-	mplayer -volume 50 "$mp3" 2>&1 > /dev/null &
-	echo  "Mplayer PID: " `jobs -p`
+	#play music
+	hour=`date +%H`
+	if test "$hour" -ge 8 && test "$hour" -lt 7
+	then
+		mplayer -volume 50 "$mp3" 2>&1 > /dev/null &
+		echo  "Mplayer PID: " `jobs -p`
+	fi
+	#count pause
 	for i in `seq 0 4`; # 5 min
 	do
 		rem=`echo "5-$i" | bc`
